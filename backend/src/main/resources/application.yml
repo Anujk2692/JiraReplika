@@ -1,0 +1,17 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  application:
+    name: jira-backend
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:postgres}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+jwt:
+  secret: ${JWT_SECRET:SuperSecretKeyForJiraReplikaApplication2026SecureKeyWithAtLeast256BitsLength!}
+  expiration: 86400000
