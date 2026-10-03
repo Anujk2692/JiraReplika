@@ -49,5 +49,5 @@ databases:
   # Managed PostgreSQL Database
   - name: jiradb
     databaseName: jiradb
-    user: postgres
+    user: jira_user
     plan: free
