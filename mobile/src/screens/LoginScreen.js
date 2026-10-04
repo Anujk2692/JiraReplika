@@ -10,7 +10,7 @@ import {
   Alert 
 } from 'react-native';
 import { useAuth } from '../context/AuthContext';
-import { setServerUrl, getServerUrl } from '../api/client';
+import { setServerUrl, getServerUrl, CLOUD_BACKEND_URL, LOCAL_BACKEND_URL } from '../api/client';
 import { theme } from '../styles/theme';
 
 export default function LoginScreen() {
@@ -136,8 +136,22 @@ export default function LoginScreen() {
               onChangeText={setCustomServerUrl}
               autoCapitalize="none"
             />
+            <View style={{ flexDirection: 'row', gap: 8, marginVertical: 8, width: '100%' }}>
+              <TouchableOpacity 
+                style={[styles.presetBtn, { flex: 1, backgroundColor: '#E9F2FF' }]} 
+                onPress={() => { setCustomServerUrl(CLOUD_BACKEND_URL); setServerUrl(CLOUD_BACKEND_URL); Alert.alert('Switched', 'Set to Render Cloud Backend'); }}
+              >
+                <Text style={{ fontSize: 11, fontWeight: '700', color: '#0052CC', textAlign: 'center' }}>☁️ Cloud Render</Text>
+              </TouchableOpacity>
+              <TouchableOpacity 
+                style={[styles.presetBtn, { flex: 1, backgroundColor: '#F4F5F7' }]} 
+                onPress={() => { setCustomServerUrl(LOCAL_BACKEND_URL); setServerUrl(LOCAL_BACKEND_URL); Alert.alert('Switched', 'Set to Local Dev Backend'); }}
+              >
+                <Text style={{ fontSize: 11, fontWeight: '700', color: '#42526E', textAlign: 'center' }}>💻 Local Dev</Text>
+              </TouchableOpacity>
+            </View>
             <TouchableOpacity style={styles.saveServerBtn} onPress={handleSaveServerUrl}>
-              <Text style={styles.saveServerBtnText}>Save Server URL</Text>
+              <Text style={styles.saveServerBtnText}>Save Custom URL</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -289,5 +303,14 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 12,
     fontWeight: 'bold'
+  },
+  presetBtn: {
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: '#DFE1E6',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });

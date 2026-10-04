@@ -1,13 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
 
-// Android Emulator uses 10.0.2.2 to access host machine; iOS Simulator and web use localhost
-const DEFAULT_HOST = Platform.OS === 'android' ? 'http://10.0.2.2:8080/api' : 'http://localhost:8080/api';
+export const CLOUD_BACKEND_URL = 'https://jira-backend-ukiv.onrender.com/api';
+export const LOCAL_BACKEND_URL = Platform.OS === 'android' ? 'http://10.0.2.2:8080/api' : 'http://localhost:8080/api';
 
-let currentBaseUrl = DEFAULT_HOST;
+let currentBaseUrl = CLOUD_BACKEND_URL;
 
 export const setServerUrl = (url) => {
-  currentBaseUrl = url.endsWith('/api') ? url : `${url}/api`;
+  currentBaseUrl = url.endsWith('/api') ? url : `${url.replace(/\/+$/, '')}/api`;
 };
 
 export const getServerUrl = () => currentBaseUrl;

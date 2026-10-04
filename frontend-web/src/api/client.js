@@ -2,7 +2,13 @@ export const getBaseUrl = () => {
   if (typeof window !== 'undefined' && localStorage.getItem('jira_api_url')) {
     return localStorage.getItem('jira_api_url');
   }
-  return import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
+  }
+  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+    return 'https://jira-backend-ukiv.onrender.com/api';
+  }
+  return 'http://localhost:8080/api';
 };
 
 export const setCustomApiUrl = (url) => {
