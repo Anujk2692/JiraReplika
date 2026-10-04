@@ -28,6 +28,7 @@ node_modules/
 frontend-web/node_modules/
 mobile/node_modules/
 frontend-web/dist/
+frontend-web/src/main/
 dist/
 build/
 .npm

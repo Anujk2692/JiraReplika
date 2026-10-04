@@ -5,7 +5,7 @@
 ![Backend](https://img.shields.io/badge/Backend-Java%2017%20%7C%20Spring%20Boot%203.2.5-brightgreen)
 ![Database](https://img.shields.io/badge/Database-PostgreSQL%2016%20%7C%2018-blue)
 ![Frontend Web](https://img.shields.io/badge/Web-React%2018%20%7C%20Vite-61dafb)
-![Mobile](https://img.shields.io/badge/Mobile-React%20Native%20%7C%20Expo-black)
+![Mobile](https://img.shields.io/badge/Mobile-React%20Native%20CLI%20(Bare)-black)
 
 ---
 
@@ -66,7 +66,7 @@ graph TD
    - Visual status breakdown and priority distribution charts.
    - Team workload balance showing issues assigned per member.
 
-8. **Cross-Platform Mobile App (React Native)**:
+8. **Cross-Platform Mobile App (React Native CLI)**:
    - Full mobile parity: Kanban board, Backlog view, My Issues personal tab.
    - Status transitions, assignee picker, comments, and new issue creation.
    - Configurable host IP for iOS Simulator, Android Emulator, and physical devices.
@@ -129,17 +129,23 @@ npm run dev
 ```
 Open `http://localhost:3000` in your browser.
 
-### 4. Mobile App (React Native / Expo)
+### 4. Mobile App (React Native CLI)
 
 ```bash
 cd mobile
 npm install
-npx expo start
+
+# Start Metro Bundler
+npx react-native start
+
+# Run on Android
+npx react-native run-android
+
+# Run on iOS (macOS only)
+cd ios && pod install && cd ..
+npx react-native run-ios
 ```
-- Press `i` to launch in iOS Simulator.
-- Press `a` to launch in Android Emulator.
-- Scan QR code with the **Expo Go** app on your phone!
-*(Tip: In the mobile app login screen, tap "Backend Server Settings" to set your computer's local LAN IP `http://192.168.x.x:8080` if testing on a physical mobile device).*
+*(Tip: In the mobile app login screen, tap "Backend Server Settings" to configure the backend API host, e.g. `http://10.0.2.2:8080/api` for Android Emulator, `http://localhost:8080/api` for iOS Simulator, or your computer's local LAN IP `http://192.168.x.x:8080/api` for physical devices).*
 
 ---
 
