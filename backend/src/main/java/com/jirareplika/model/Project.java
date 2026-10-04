@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "projects")
+@Table(name = "jira_projects")
 public class Project {
 
     @Id
@@ -32,7 +32,7 @@ public class Project {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-        name = "project_members",
+        name = "jira_project_members",
         joinColumns = @JoinColumn(name = "project_id"),
         inverseJoinColumns = @JoinColumn(name = "user_id")
     )

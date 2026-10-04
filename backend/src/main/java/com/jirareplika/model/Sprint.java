@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
-@Table(name = "sprints")
+@Table(name = "jira_sprints")
 public class Sprint {
 
     @Id

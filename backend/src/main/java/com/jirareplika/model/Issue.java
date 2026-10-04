@@ -11,7 +11,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "issues")
+@Table(name = "jira_issues")
 public class Issue {
 
     @Id
@@ -73,7 +73,7 @@ public class Issue {
     private LocalDate dueDate;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "issue_labels", joinColumns = @JoinColumn(name = "issue_id"))
+    @CollectionTable(name = "jira_issue_labels", joinColumns = @JoinColumn(name = "issue_id"))
     @Column(name = "label")
     private Set<String> labels = new HashSet<>();
 

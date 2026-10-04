@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
-@Table(name = "comments")
+@Table(name = "jira_comments")
 public class Comment {
 
     @Id
