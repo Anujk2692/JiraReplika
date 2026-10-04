@@ -60,10 +60,10 @@ function JiraMainApp() {
                   <svg className="jira-logo-icon" viewBox="0 0 24 24" fill="#0052CC">
                     <path d="M11.53 2c0 2.4 1.97 4.35 4.4 4.35h1.72V8.1c0 2.4 1.97 4.35 4.4 4.35v-1.74c0-2.4-1.97-4.35-4.4-4.35h-1.72V4.6c0-2.4-1.97-4.35-4.4-4.35v1.75zm-5.76 5.8c0 2.4 1.97 4.35 4.4 4.35h1.72v1.75c0 2.4 1.97 4.35 4.4 4.35v-1.75c0-2.4-1.97-4.35-4.4-4.35H10.17V9.56c0-2.4-1.97-4.35-4.4-4.35v2.59zM0 13.6c0 2.4 1.97 4.35 4.4 4.35h1.72v1.75C6.12 22.1 8.09 24 10.52 24v-1.75c0-2.4-1.97-4.35-4.4-4.35H4.4V16.14C4.4 13.74 2.43 11.8 0 11.8v1.8z" />
                   </svg>
-                  <span className="jira-brand-text">Jira Software</span>
+                  <span className="jira-brand-text">Project Management</span>
                 </div>
-                <h2>Welcome to Jira Replica</h2>
-                <p>Collaborate, plan sprints, manage issues, and track velocity with full Jira power.</p>
+                <h2>Welcome to Project Management</h2>
+                <p>Collaborate, plan sprints, manage issues, and track velocity with full agile power.</p>
                 <button className="btn-primary welcome-login-btn" onClick={() => setIsAuthOpen(true)}>
                   Sign In to Continue
                 </button>

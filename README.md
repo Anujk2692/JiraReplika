@@ -1,5 +1,5 @@
-# JiraReplika 🚀
-> Full-Stack Enterprise Jira Clone with Spring Boot 3, PostgreSQL, React Web & React Native Mobile.
+# Project Management 🚀
+> Full-Stack Enterprise Project Management & Agile Task Workspace with Spring Boot 3, PostgreSQL, React Web & React Native Mobile.
 
 ![Jira Architecture](https://img.shields.io/badge/Architecture-Full--Stack-blue)
 ![Backend](https://img.shields.io/badge/Backend-Java%2017%20%7C%20Spring%20Boot%203.2.5-brightgreen)

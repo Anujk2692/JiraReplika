@@ -43,9 +43,9 @@ export default function LoginScreen() {
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.logoSection}>
           <View style={styles.logoIcon}>
-            <Text style={styles.logoIconText}>J</Text>
+            <Text style={styles.logoIconText}>PM</Text>
           </View>
-          <Text style={styles.logoTitle}>Jira Software</Text>
+          <Text style={styles.logoTitle}>Project Management</Text>
           <Text style={styles.logoSubtitle}>Mobile Agile Workspace</Text>
         </View>
 

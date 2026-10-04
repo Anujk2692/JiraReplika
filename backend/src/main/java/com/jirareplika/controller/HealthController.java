@@ -13,6 +13,6 @@ public class HealthController {
 
     @GetMapping
     public ResponseEntity<Map<String, String>> health() {
-        return ResponseEntity.ok(Map.of("status", "UP", "message", "JiraReplika Backend is operational"));
+        return ResponseEntity.ok(Map.of("status", "UP", "message", "Project Management Backend is operational"));
     }
 }
