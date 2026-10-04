@@ -38,10 +38,13 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# React Native & Expo
+# React Native & Native Build
 .expo/
 .expo-shared/
 web-build/
+.gradle/
+android/.gradle/
+mobile/android/.gradle/
 *.jks
 *.p8
 *.p12
