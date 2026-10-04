@@ -47,6 +47,10 @@ public class IssueService {
         IssueType type,
         String search
     ) {
+        String searchPattern = (search != null && !search.isBlank()) 
+            ? "%" + search.trim().toLowerCase() + "%" 
+            : null;
+
         List<Issue> issues = issueRepository.filterIssues(
             projectId,
             sprintId,
@@ -54,7 +58,7 @@ public class IssueService {
             assigneeId,
             priority,
             type,
-            (search != null && !search.isBlank()) ? search.trim() : null
+            searchPattern
         );
 
         return issues.stream().map(this::enrichDto).collect(Collectors.toList());

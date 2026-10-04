@@ -26,7 +26,7 @@ public interface IssueRepository extends JpaRepository<Issue, Long> {
            "AND (:assigneeId IS NULL OR i.assignee.id = :assigneeId) " +
            "AND (:priority IS NULL OR i.priority = :priority) " +
            "AND (:type IS NULL OR i.type = :type) " +
-           "AND (:search IS NULL OR LOWER(i.summary) LIKE LOWER(CONCAT('%', :search, '%')) OR LOWER(i.issueKey) LIKE LOWER(CONCAT('%', :search, '%'))) " +
+           "AND (:searchPattern IS NULL OR LOWER(i.summary) LIKE :searchPattern OR LOWER(i.issueKey) LIKE :searchPattern) " +
            "ORDER BY i.orderIndex ASC")
     List<Issue> filterIssues(
         @Param("projectId") Long projectId,
@@ -35,7 +35,7 @@ public interface IssueRepository extends JpaRepository<Issue, Long> {
         @Param("assigneeId") Long assigneeId,
         @Param("priority") IssuePriority priority,
         @Param("type") IssueType type,
-        @Param("search") String search
+        @Param("searchPattern") String searchPattern
     );
 
     long countByProjectId(Long projectId);
