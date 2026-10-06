@@ -55,7 +55,7 @@ export default function LoginScreen() {
           <View style={styles.demoGrid}>
             <TouchableOpacity 
               style={styles.demoBtn} 
-              onPress={() => handleLogin('alex.admin@jira.dev', 'Password123!')}
+              onPress={() => handleLogin('alex.admin@pm.dev', 'Password123!')}
             >
               <Text style={styles.demoBtnName}>Alex Rivera</Text>
               <Text style={styles.demoBtnRole}>Admin / Lead</Text>
@@ -63,7 +63,7 @@ export default function LoginScreen() {
 
             <TouchableOpacity 
               style={styles.demoBtn} 
-              onPress={() => handleLogin('sarah.lead@jira.dev', 'Password123!')}
+              onPress={() => handleLogin('sarah.lead@pm.dev', 'Password123!')}
             >
               <Text style={styles.demoBtnName}>Sarah Chen</Text>
               <Text style={styles.demoBtnRole}>Product Lead</Text>
@@ -71,7 +71,7 @@ export default function LoginScreen() {
 
             <TouchableOpacity 
               style={styles.demoBtn} 
-              onPress={() => handleLogin('david.dev@jira.dev', 'Password123!')}
+              onPress={() => handleLogin('david.dev@pm.dev', 'Password123!')}
             >
               <Text style={styles.demoBtnName}>David Miller</Text>
               <Text style={styles.demoBtnRole}>Senior Dev</Text>
@@ -79,7 +79,7 @@ export default function LoginScreen() {
 
             <TouchableOpacity 
               style={styles.demoBtn} 
-              onPress={() => handleLogin('elena.qa@jira.dev', 'Password123!')}
+              onPress={() => handleLogin('elena.qa@pm.dev', 'Password123!')}
             >
               <Text style={styles.demoBtnName}>Elena Rostova</Text>
               <Text style={styles.demoBtnRole}>QA Engineer</Text>

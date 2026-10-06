@@ -61,16 +61,16 @@ export default function AuthModal({ isOpen, onClose }) {
         <div className="demo-accounts-section">
           <div className="demo-accounts-title">QUICK DEMO TEST DRIVE (1-CLICK)</div>
           <div className="demo-buttons-grid">
-            <button type="button" className="demo-btn" onClick={() => handleDemoLogin('alex.admin@jira.dev')}>
+            <button type="button" className="demo-btn" onClick={() => handleDemoLogin('alex.admin@pm.dev')}>
               <strong>Alex Rivera</strong> <span>Admin / Lead</span>
             </button>
-            <button type="button" className="demo-btn" onClick={() => handleDemoLogin('sarah.lead@jira.dev')}>
+            <button type="button" className="demo-btn" onClick={() => handleDemoLogin('sarah.lead@pm.dev')}>
               <strong>Sarah Chen</strong> <span>Product Lead</span>
             </button>
-            <button type="button" className="demo-btn" onClick={() => handleDemoLogin('david.dev@jira.dev')}>
+            <button type="button" className="demo-btn" onClick={() => handleDemoLogin('david.dev@pm.dev')}>
               <strong>David Miller</strong> <span>Senior Dev</span>
             </button>
-            <button type="button" className="demo-btn" onClick={() => handleDemoLogin('elena.qa@jira.dev')}>
+            <button type="button" className="demo-btn" onClick={() => handleDemoLogin('elena.qa@pm.dev')}>
               <strong>Elena Rostova</strong> <span>QA Engineer</span>
             </button>
           </div>

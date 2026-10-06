@@ -15,7 +15,7 @@ export const getServerUrl = () => currentBaseUrl;
 export async function request(endpoint, options = {}) {
   let token = null;
   try {
-    token = await AsyncStorage.getItem('jira_token');
+    token = (await AsyncStorage.getItem('pm_token')) || (await AsyncStorage.getItem('jira_token'));
   } catch (_) {}
 
   const headers = {
@@ -34,6 +34,8 @@ export async function request(endpoint, options = {}) {
 
   if (response.status === 401) {
     try {
+      await AsyncStorage.removeItem('pm_token');
+      await AsyncStorage.removeItem('pm_user');
       await AsyncStorage.removeItem('jira_token');
       await AsyncStorage.removeItem('jira_user');
     } catch (_) {}

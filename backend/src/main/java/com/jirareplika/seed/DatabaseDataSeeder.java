@@ -44,12 +44,20 @@ public class DatabaseDataSeeder implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... args) {
+        // Upgrade any existing demo users with @jira.dev to @pm.dev
+        userRepository.findAll().forEach(u -> {
+            if (u.getEmail().endsWith("@jira.dev")) {
+                u.setEmail(u.getEmail().replace("@jira.dev", "@pm.dev"));
+                userRepository.save(u);
+            }
+        });
+
         if (userRepository.count() > 0) return;
 
-        User alex = new User(null, "alex.admin@jira.dev", "Alex Rivera", passwordEncoder.encode("Password123!"), "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80", Role.ROLE_ADMIN);
-        User sarah = new User(null, "sarah.lead@jira.dev", "Sarah Chen", passwordEncoder.encode("Password123!"), "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80", Role.ROLE_PROJECT_LEAD);
-        User david = new User(null, "david.dev@jira.dev", "David Miller", passwordEncoder.encode("Password123!"), "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80", Role.ROLE_MEMBER);
-        User elena = new User(null, "elena.qa@jira.dev", "Elena Rostova", passwordEncoder.encode("Password123!"), "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80", Role.ROLE_MEMBER);
+        User alex = new User(null, "alex.admin@pm.dev", "Alex Rivera", passwordEncoder.encode("Password123!"), "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80", Role.ROLE_ADMIN);
+        User sarah = new User(null, "sarah.lead@pm.dev", "Sarah Chen", passwordEncoder.encode("Password123!"), "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80", Role.ROLE_PROJECT_LEAD);
+        User david = new User(null, "david.dev@pm.dev", "David Miller", passwordEncoder.encode("Password123!"), "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80", Role.ROLE_MEMBER);
+        User elena = new User(null, "elena.qa@pm.dev", "Elena Rostova", passwordEncoder.encode("Password123!"), "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80", Role.ROLE_MEMBER);
 
         userRepository.saveAll(List.of(alex, sarah, david, elena));
 

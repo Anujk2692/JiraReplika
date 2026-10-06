@@ -12,8 +12,8 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     async function loadStored() {
       try {
-        const storedToken = await AsyncStorage.getItem('jira_token');
-        const storedUser = await AsyncStorage.getItem('jira_user');
+        const storedToken = (await AsyncStorage.getItem('pm_token')) || (await AsyncStorage.getItem('jira_token'));
+        const storedUser = (await AsyncStorage.getItem('pm_user')) || (await AsyncStorage.getItem('jira_user'));
         if (storedToken && storedUser) {
           setToken(storedToken);
           setUser(JSON.parse(storedUser));
@@ -31,6 +31,8 @@ export function AuthProvider({ children }) {
     const res = await mobileApi.login(email, password);
     setToken(res.token);
     setUser(res.user);
+    await AsyncStorage.setItem('pm_token', res.token);
+    await AsyncStorage.setItem('pm_user', JSON.stringify(res.user));
     await AsyncStorage.setItem('jira_token', res.token);
     await AsyncStorage.setItem('jira_user', JSON.stringify(res.user));
     return res;
@@ -39,6 +41,8 @@ export function AuthProvider({ children }) {
   const logout = async () => {
     setToken(null);
     setUser(null);
+    await AsyncStorage.removeItem('pm_token');
+    await AsyncStorage.removeItem('pm_user');
     await AsyncStorage.removeItem('jira_token');
     await AsyncStorage.removeItem('jira_user');
   };

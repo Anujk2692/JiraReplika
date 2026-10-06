@@ -1,6 +1,6 @@
 export const getBaseUrl = () => {
-  if (typeof window !== 'undefined' && localStorage.getItem('jira_api_url')) {
-    return localStorage.getItem('jira_api_url');
+  if (typeof window !== 'undefined' && (localStorage.getItem('pm_api_url') || localStorage.getItem('jira_api_url'))) {
+    return localStorage.getItem('pm_api_url') || localStorage.getItem('jira_api_url');
   }
   if (import.meta.env.VITE_API_URL) {
     return import.meta.env.VITE_API_URL;
@@ -13,15 +13,17 @@ export const getBaseUrl = () => {
 
 export const setCustomApiUrl = (url) => {
   if (!url) {
+    localStorage.removeItem('pm_api_url');
     localStorage.removeItem('jira_api_url');
   } else {
     const formatted = url.endsWith('/api') ? url : `${url.replace(/\/+$/, '')}/api`;
+    localStorage.setItem('pm_api_url', formatted);
     localStorage.setItem('jira_api_url', formatted);
   }
 };
 
 export async function request(endpoint, options = {}) {
-  const token = localStorage.getItem('jira_token');
+  const token = localStorage.getItem('pm_token') || localStorage.getItem('jira_token');
   
   const headers = {
     'Content-Type': 'application/json',
@@ -40,8 +42,11 @@ export async function request(endpoint, options = {}) {
 
   if (response.status === 401) {
     // Unauthorized / expired token
+    localStorage.removeItem('pm_token');
+    localStorage.removeItem('pm_user');
     localStorage.removeItem('jira_token');
     localStorage.removeItem('jira_user');
+    window.dispatchEvent(new CustomEvent('pm_auth_logout'));
     window.dispatchEvent(new CustomEvent('jira_auth_logout'));
   }
 

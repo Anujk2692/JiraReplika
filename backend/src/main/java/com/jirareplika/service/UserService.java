@@ -52,7 +52,16 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public AuthResponse login(AuthRequest request) {
-        User user = userRepository.findByEmail(request.getEmail().toLowerCase().trim())
+        String reqEmail = request.getEmail().toLowerCase().trim();
+        User user = userRepository.findByEmail(reqEmail)
+            .or(() -> {
+                if (reqEmail.endsWith("@pm.dev")) {
+                    return userRepository.findByEmail(reqEmail.replace("@pm.dev", "@jira.dev"));
+                } else if (reqEmail.endsWith("@jira.dev")) {
+                    return userRepository.findByEmail(reqEmail.replace("@jira.dev", "@pm.dev"));
+                }
+                return java.util.Optional.empty();
+            })
             .orElseThrow(() -> new BadCredentialsException("Invalid email or password"));
 
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {

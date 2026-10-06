@@ -79,10 +79,10 @@ The backend automatically seeds these users, projects, sprints, and issues on fi
 
 | Name | Role | Email | Password |
 |---|---|---|---|
-| **Alex Rivera** | Admin / Project Lead | `alex.admin@jira.dev` | `Password123!` |
-| **Sarah Chen** | Product Lead | `sarah.lead@jira.dev` | `Password123!` |
-| **David Miller** | Senior Developer | `david.dev@jira.dev` | `Password123!` |
-| **Elena Rostova** | Lead QA | `elena.qa@jira.dev` | `Password123!` |
+| **Alex Rivera** | Admin / Project Lead | `alex.admin@pm.dev` | `Password123!` |
+| **Sarah Chen** | Product Lead | `sarah.lead@pm.dev` | `Password123!` |
+| **David Miller** | Senior Developer | `david.dev@pm.dev` | `Password123!` |
+| **Elena Rostova** | Lead QA | `elena.qa@pm.dev` | `Password123!` |
 
 *(The web and mobile apps also feature **1-click quick login buttons** for instant testing!)*
 
@@ -99,7 +99,7 @@ You can run PostgreSQL via Docker or your local PostgreSQL service:
 docker-compose up -d
 
 # Option B: Or use your local PostgreSQL 18
-# Create database: createdb jiradb
+# Create database: createdb pmdb
 ```
 
 ### 2. Java Backend (Spring Boot 3)
@@ -116,7 +116,7 @@ mvn spring-boot:run
 mvn spring-boot:run -Dspring-boot.run.profiles=dev
 
 # Or run the packaged JAR directly:
-java -jar target/jira-backend-1.0.0.jar
+java -jar target/project-management-backend-1.0.0.jar
 ```
 The REST API is live at `http://localhost:8080`.
 

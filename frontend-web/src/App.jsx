@@ -14,7 +14,7 @@ import CreateProjectModal from './components/CreateProjectModal';
 import AuthModal from './components/AuthModal';
 import './App.css';
 
-function JiraMainApp() {
+function ProjectManagementMainApp() {
   const { isAuthenticated } = useAuth();
   const { currentProject, loading: projectLoading } = useProject();
 
@@ -150,7 +150,7 @@ export default function App() {
   return (
     <AuthProvider>
       <ProjectProvider>
-        <JiraMainApp />
+        <ProjectManagementMainApp />
       </ProjectProvider>
     </AuthProvider>
   );

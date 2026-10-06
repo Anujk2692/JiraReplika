@@ -1,25 +1,45 @@
 :root {
-  --jira-primary: #0052CC;
-  --jira-primary-hover: #0065FF;
-  --jira-primary-dark: #0747A6;
-  --jira-primary-light: #DEEBFF;
+  --pm-primary: #0052CC;
+  --pm-primary-hover: #0065FF;
+  --pm-primary-dark: #0747A6;
+  --pm-primary-light: #DEEBFF;
   
-  --jira-bg: #FFFFFF;
-  --jira-board-bg: #F4F5F7;
-  --jira-card-bg: #FFFFFF;
-  --jira-column-bg: #EBECF0;
-  --jira-border: #DFE1E6;
-  --jira-border-hover: #C1C7D0;
+  --pm-bg: #FFFFFF;
+  --pm-board-bg: #F4F5F7;
+  --pm-card-bg: #FFFFFF;
+  --pm-column-bg: #EBECF0;
+  --pm-border: #DFE1E6;
+  --pm-border-hover: #C1C7D0;
   
-  --jira-text: #172B4D;
-  --jira-text-secondary: #42526E;
-  --jira-text-muted: #6B778C;
+  --pm-text: #172B4D;
+  --pm-text-secondary: #42526E;
+  --pm-text-muted: #6B778C;
   
-  --jira-success: #36B37E;
-  --jira-warning: #FFAB00;
-  --jira-danger: #FF5630;
-  --jira-info: #0052CC;
-  --jira-purple: #6554C0;
+  --pm-success: #36B37E;
+  --pm-warning: #FFAB00;
+  --pm-danger: #FF5630;
+  --pm-info: #0052CC;
+  --pm-purple: #6554C0;
+
+  /* Aliases */
+  --jira-primary: var(--pm-primary);
+  --jira-primary-hover: var(--pm-primary-hover);
+  --jira-primary-dark: var(--pm-primary-dark);
+  --jira-primary-light: var(--pm-primary-light);
+  --jira-bg: var(--pm-bg);
+  --jira-board-bg: var(--pm-board-bg);
+  --jira-card-bg: var(--pm-card-bg);
+  --jira-column-bg: var(--pm-column-bg);
+  --jira-border: var(--pm-border);
+  --jira-border-hover: var(--pm-border-hover);
+  --jira-text: var(--pm-text);
+  --jira-text-secondary: var(--pm-text-secondary);
+  --jira-text-muted: var(--pm-text-muted);
+  --jira-success: var(--pm-success);
+  --jira-warning: var(--pm-warning);
+  --jira-danger: var(--pm-danger);
+  --jira-info: var(--pm-info);
+  --jira-purple: var(--pm-purple);
   
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --shadow-sm: 0 1px 1px rgba(9, 30, 66, 0.25), 0 0 1px rgba(9, 30, 66, 0.31);
