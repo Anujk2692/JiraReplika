@@ -12,7 +12,7 @@ export function ProjectProvider({ children }) {
   const [activeSprint, setActiveSprint] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const loadProjects = useCallback(async () => {
+  const loadProjects = useCallback(async (preferredProjectId) => {
     if (!isAuthenticated) {
       setProjects([]);
       setCurrentProject(null);
@@ -24,6 +24,13 @@ export function ProjectProvider({ children }) {
       const list = await projectsApi.getAll();
       setProjects(list);
       if (list.length > 0) {
+        if (preferredProjectId) {
+          const foundPreferred = list.find(p => p.id === preferredProjectId);
+          if (foundPreferred) {
+            setCurrentProject(foundPreferred);
+            return;
+          }
+        }
         // Retain current project or default to first
         setCurrentProject(prev => {
           if (prev) {

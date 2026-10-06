@@ -7,10 +7,10 @@ export const authApi = {
       body: JSON.stringify({ email, password })
     }),
 
-  register: (name, email, password, avatarUrl) => 
+  register: (name, email, password, avatarUrl, role) => 
     request('/auth/register', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password, avatarUrl })
+      body: JSON.stringify({ name, email, password, avatarUrl, role: role || 'ROLE_MEMBER' })
     }),
 
   getCurrentUser: () => request('/auth/me'),

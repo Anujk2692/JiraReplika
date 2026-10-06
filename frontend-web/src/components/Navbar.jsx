@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useProject } from '../context/ProjectContext';
 
-export default function Navbar({ onOpenCreateIssue, searchTerm, setSearchTerm, onOpenAuth }) {
+export default function Navbar({ onOpenCreateIssue, onOpenCreateProject, searchTerm, setSearchTerm, onOpenAuth }) {
   const { user, isAuthenticated, logout } = useAuth();
   const { projects, currentProject, setCurrentProject } = useProject();
   const [showProjectDropdown, setShowProjectDropdown] = useState(false);
@@ -49,6 +49,20 @@ export default function Navbar({ onOpenCreateIssue, searchTerm, setSearchTerm, o
                     </div>
                   </div>
                 ))}
+                <div className="dropdown-divider" />
+                <button 
+                  className="dropdown-item" 
+                  style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#0052CC', fontWeight: '600' }}
+                  onClick={() => {
+                    setShowProjectDropdown(false);
+                    if (onOpenCreateProject) onOpenCreateProject();
+                  }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                  </svg>
+                  Create project
+                </button>
               </div>
             )}
           </div>

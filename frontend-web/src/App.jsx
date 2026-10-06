@@ -10,6 +10,7 @@ import MembersView from './components/MembersView';
 import DashboardView from './components/DashboardView';
 import IssueModal from './components/IssueModal';
 import CreateIssueModal from './components/CreateIssueModal';
+import CreateProjectModal from './components/CreateProjectModal';
 import AuthModal from './components/AuthModal';
 import './App.css';
 
@@ -20,6 +21,7 @@ function JiraMainApp() {
   const [activeView, setActiveView] = useState('board');
   const [selectedIssueId, setSelectedIssueId] = useState(null);
   const [isCreateOpen, setIsCreateOpen] = useState(false);
+  const [isCreateProjectOpen, setIsCreateProjectOpen] = useState(false);
   const [createDefaults, setCreateDefaults] = useState({});
   const [searchTerm, setSearchTerm] = useState('');
   const [isAuthOpen, setIsAuthOpen] = useState(!isAuthenticated);
@@ -39,6 +41,7 @@ function JiraMainApp() {
     <div className="jira-app-container">
       <Navbar
         onOpenCreateIssue={() => handleQuickCreate({})}
+        onOpenCreateProject={() => setIsCreateProjectOpen(true)}
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         onOpenAuth={() => setIsAuthOpen(true)}
@@ -125,6 +128,13 @@ function JiraMainApp() {
         onClose={() => setIsCreateOpen(false)}
         onIssueCreated={handleIssueUpdated}
         defaultValues={createDefaults}
+      />
+
+      {/* Create Project Modal */}
+      <CreateProjectModal
+        isOpen={isCreateProjectOpen}
+        onClose={() => setIsCreateProjectOpen(false)}
+        onProjectCreated={() => setBoardRefreshKey(prev => prev + 1)}
       />
 
       {/* Authentication Modal */}
