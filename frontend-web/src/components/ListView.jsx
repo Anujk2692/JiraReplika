@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useProject } from '../context/ProjectContext';
 import { issuesApi } from '../api';
 
-export default function ListView({ onSelectIssue, searchTerm }) {
+export default function ListView({ onSelectIssue, onOpenCreateIssue, searchTerm }) {
   const { currentProject } = useProject();
   const [issues, setIssues] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -70,11 +70,23 @@ export default function ListView({ onSelectIssue, searchTerm }) {
 
   return (
     <div className="jira-list-container">
-      <div className="list-header">
-        <div className="board-breadcrumbs">
-          <span>Projects</span> / <span>{currentProject?.name}</span> / <span>List view</span>
+      <div className="list-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div>
+          <div className="board-breadcrumbs">
+            <span>Projects</span> / <span>{currentProject?.name}</span> / <span>List view</span>
+          </div>
+          <h1 className="board-title">Issues list ({issues.length})</h1>
         </div>
-        <h1 className="board-title">Issues list ({issues.length})</h1>
+        {onOpenCreateIssue && (
+          <button 
+            type="button" 
+            className="btn-primary" 
+            style={{ marginTop: '8px' }}
+            onClick={() => onOpenCreateIssue({})}
+          >
+            + Create issue
+          </button>
+        )}
       </div>
 
       <div className="jira-table-wrapper">

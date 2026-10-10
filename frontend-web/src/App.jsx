@@ -97,6 +97,7 @@ function ProjectManagementMainApp() {
                 <ListView
                   key={boardRefreshKey}
                   onSelectIssue={setSelectedIssueId}
+                  onOpenCreateIssue={() => handleQuickCreate({})}
                   searchTerm={searchTerm}
                 />
               )}
@@ -123,12 +124,14 @@ function ProjectManagementMainApp() {
       )}
 
       {/* Create Issue Modal */}
-      <CreateIssueModal
-        isOpen={isCreateOpen}
-        onClose={() => setIsCreateOpen(false)}
-        onIssueCreated={handleIssueUpdated}
-        defaultValues={createDefaults}
-      />
+      {isCreateOpen && (
+        <CreateIssueModal
+          isOpen={isCreateOpen}
+          onClose={() => setIsCreateOpen(false)}
+          onIssueCreated={handleIssueUpdated}
+          defaultValues={createDefaults}
+        />
+      )}
 
       {/* Create Project Modal */}
       <CreateProjectModal

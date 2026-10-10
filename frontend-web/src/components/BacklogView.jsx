@@ -112,6 +112,15 @@ export default function BacklogView({ onSelectIssue, onOpenCreateIssue }) {
                   <span className="sprint-issue-count">
                     {sprintIssues.length} issues · {points} pts
                   </span>
+                  {onOpenCreateIssue && (
+                    <button 
+                      className="btn-secondary-sm" 
+                      onClick={() => onOpenCreateIssue({ sprintId: sprint.id, status: 'TO_DO' })}
+                      title="Create issue in this sprint"
+                    >
+                      + Create issue
+                    </button>
+                  )}
                   {sprint.status === 'FUTURE' && (
                     <button className="btn-primary-sm" onClick={() => handleStartSprint(sprint.id)}>
                       Start sprint
@@ -175,11 +184,20 @@ export default function BacklogView({ onSelectIssue, onOpenCreateIssue }) {
 
         {/* Backlog Section */}
         <div className="backlog-section-box">
-          <div className="sprint-header">
+          <div className="sprint-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div className="sprint-header-left">
               <h3 className="sprint-title">Backlog</h3>
               <span className="sprint-issue-count">({backlogIssues.length} issues)</span>
             </div>
+            {onOpenCreateIssue && (
+              <button 
+                className="btn-secondary-sm" 
+                onClick={() => onOpenCreateIssue({ sprintId: null, status: 'BACKLOG' })}
+                title="Create issue in backlog"
+              >
+                + Create issue
+              </button>
+            )}
           </div>
 
           <div className="sprint-issues-table">

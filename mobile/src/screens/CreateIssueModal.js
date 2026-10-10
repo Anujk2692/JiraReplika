@@ -25,8 +25,12 @@ export default function CreateIssueModal({ visible, onClose, onCreated }) {
   const [loading, setLoading] = useState(false);
 
   const handleCreate = async () => {
-    if (!summary.trim() || !currentProject) {
-      Alert.alert('Required', 'Please enter a summary');
+    if (!currentProject) {
+      Alert.alert('No Project', 'Please select or create a project first.');
+      return;
+    }
+    if (!summary.trim()) {
+      Alert.alert('Required', 'Please enter an issue summary.');
       return;
     }
 
